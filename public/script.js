@@ -1,8 +1,8 @@
 const emailsAndPasswords = [
-    { id: "1", email: "moiz1@gmail.com", password: "moiz1" },
     { id: "2", email: "publishjournal8@gmail.com", password: "uzci jjsf mobj lgqn" },
-    { id: "3", email: "moiz3@gmail.com", password: "moiz123" },
-    { id: "4", email: "moiz4@gmail.com", password: "moiz1234" },
+    { id: "1", email: "journalresearch78@gmail.com", password: "zyun yyqn blzh ijqm" },
+    { id: "3", email: "journal.publish.article@gmail.com", password: "bjir eexi nkwl gwey" },
+    { id: "4", email: "research.journal.publish@gmail.com", password: "ydmc nayb ncjq qukr" },
 ]
 
 document.addEventListener('DOMContentLoaded', () => {
