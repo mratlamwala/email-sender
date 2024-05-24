@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Sender</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <form id="emailForm" class="form">
+            <div class="form-group">
+                <label for="email">Email 
+                    <button type="button" class="clear-button" data-input="emailSelect">Clear</button>
+                </label>
+                <div class="input-group">
+                    <select name="email" id="emailSelect" class="select" required>
+                        <option value="" selected disabled>Select Email</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="subject">Subject
+                    <button type="button" class="clear-button" data-input="subject">Clear</button>
+                </label>
+                <div class="input-group">
+                    <input type="text" id="subject" name="subject" class="input" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="content">Content
+                    <button type="button" class="clear-button" data-input="content">Clear</button>
+                </label>
+                <div class="input-group">
+                    <textarea id="content" name="content" class="textarea" required></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="emails">Send To
+                    <button type="button" class="clear-button" data-input="emails">Clear</button>
+                </label>
+                <div class="input-group">
+                    <textarea id="emails" name="emails" class="textarea" required></textarea>
+                </div>
+            </div>
+            <div class="button-group">
+                <button id="sendButton" class="button">Send Emails</button>
+                <button id="clearButton" type="button" class="button button-secondary">Clear Form</button>
+            </div>
+
+            <div class="progress-container" id="progress-bar-container">
+                <div id="progressBar" class="progress-bar"></div>
+                <p id="progressBarMessage"></p>
+            </div>
+
+            <div id="status"></div>
+
+            <div id="failedEmailsWrapper">
+                <strong>Failed Emails:</strong>
+                <ol id="failedEmailsList"></ol>
+            </div>
+
+            <strong id="alert"></strong>
+        </form>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
