@@ -7,6 +7,11 @@ const server = http.createServer(app)
 const io = socketIo(server);
 const path = require('path');
 const { checkMXRecords } = require('./helper');
+const multer = require('multer');
+const pdfParse = require('pdf-parse');
+const fs = require('fs');
+
+const upload = multer({ dest: 'uploads/' });
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
@@ -17,6 +22,37 @@ io.on('connection', (socket) => {
     console.log('socket connected')
     socket.on('disconnect', () => console.log('disconnected from user'));
 })
+
+app.get('/extract', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'extract-emails', 'index.html'))
+})
+
+app.post('/upload', upload.array('pdfs'), async (req, res) => {
+    try {
+        const files = req.files;
+        let emails = [];
+
+        let count = 0;
+        for (const file of files) {
+            const dataBuffer = fs.readFileSync(file.path);
+            const data = await pdfParse(dataBuffer);
+            const emailMatches = data.text.match(/[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9._-]+/g);
+            if (emailMatches) {
+                emails = emails.concat(emailMatches);
+            }
+            fs.unlinkSync(file.path); // delete the file after processing
+
+            count++;
+            io.emit('pdfUpload', { uploaded: count, total: files.length });
+        }
+
+        res.json({ emails: [...new Set(emails)] }); // return unique emails
+    } catch (err) {
+        console.error(err);
+        res.status(500).send('Error processing files');
+    }
+});
+
 
 // Sample route to send bulk emails
 app.post('/api/send-emails', async (req, res) => {

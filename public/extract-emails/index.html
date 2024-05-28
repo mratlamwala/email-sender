@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Extractor</title>
+    <link rel="stylesheet" href="extract-emails/style.css">
+</head>
+
+<body>
+    <div class="extract-email-container">
+        <button id="reset-form-btn">Reset</button>
+        <h1>Upload PDF Files</h1>
+        <form id="upload-form" enctype="multipart/form-data">
+            <input type="file" id="pdfs" name="pdfs" multiple accept="application/pdf">
+            <button type="submit">Upload and Extract Emails</button>
+        </form>
+
+        <div class="progress-container" id="progress-bar-container">
+            <div id="progressBar" class="progress-bar"></div>
+            <p id="progressBarMessage"></p>
+        </div>
+
+        <div id="result">
+            <h2>Extracted Emails</h2>
+            <p id="email-count"></p>
+            <div class="copy-emails-btn-wrapper">
+                <button id="copy-emails" style="display:none;">Copy All!</button>
+            </div>
+            <ol id="email-list"></ol>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="extract-emails/script.js"></script>
+</body>
+
+</html>
