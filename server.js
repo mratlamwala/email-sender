@@ -121,4 +121,6 @@ app.post('/api/send-emails', async (req, res) => {
 
 });
 
-server.listen(4000, () => console.log('server is up!!!!!'))
+const port = process.env.PORT || 4000;
+
+server.listen(port, () => console.log('server is up!!!!!'))
