@@ -10,11 +10,12 @@
 
 <body>
     <div class="extract-email-container">
-        <button id="reset-form-btn">Reset</button>
+        <a class="switch" href="/">Switch to Email Sender</a>
         <h1>Upload PDF Files</h1>
         <form id="upload-form" enctype="multipart/form-data">
             <input type="file" id="pdfs" name="pdfs" multiple accept="application/pdf">
             <button type="submit">Upload and Extract Emails</button>
+            <button id="reset-form-btn" type="button" class="button button-secondary">Clear Form</button>
         </form>
 
         <div class="progress-container" id="progress-bar-container">

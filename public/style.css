@@ -12,13 +12,23 @@ body {
     min-height: 100vh;
 }
 
+.switch {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
 .form {
+    position: relative;
     background-color: #fff;
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 500px;
     box-sizing: border-box;
+    padding-top: 50px;
 }
 
 /* Form Styles */
